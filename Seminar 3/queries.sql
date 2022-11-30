@@ -28,7 +28,8 @@ GROUP BY amount_of_siblings;
 CREATE VIEW teachers_lesson_count_this_month AS
 SELECT a.teacher_id, a.first_name, COUNT() as lessons
 FROM teacher as a INNER JOIN lesson as b ON a.teacher_id = b.teacher_id
-WHERE EXTRACT(YEAR FROM CAST(b.date AS timestamp)) = 2022 AND EXTRACT(MONTH FROM CAST (b.date AS timestamp)) = 11
+WHERE EXTRACT(YEAR FROM CAST(b.date AS timestamp)) = EXTRACT(YEAR FROM CURRENT_DATE) 
+AND EXTRACT(MONTH FROM CAST (b.date AS timestamp)) = EXTRACT(MONTH FROM CURRENT_DATE)
 GROUP BY a.teacher_id
 HAVING COUNT() >= 3
 ORDER BY lessons DESC;
