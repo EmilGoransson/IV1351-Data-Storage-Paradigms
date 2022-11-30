@@ -47,4 +47,4 @@ FROM lesson AS l INNER JOIN student_lesson as a ON l.lesson_id = a.lesson_id
 WHERE l.lesson_type = 'ensemble' AND EXTRACT(WEEK FROM CURRENT_DATE)+1 = EXTRACT(WEEK FROM CAST(l.date AS timestamp))
 AND EXTRACT(YEAR FROM CURRENT_DATE) = EXTRACT(YEAR FROM CAST(l.date AS timestamp))
 GROUP BY a.lesson_id, l.lesson_id
-ORDER BY l.genre, day_of_week
+ORDER BY l.genre, day_of_week;
